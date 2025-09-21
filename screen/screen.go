@@ -6,14 +6,16 @@ import (
 	"main/settings"
 )
 
-func GetScreen(mode settings.Settings) (*image.RGBA, error) {
-	// firstPoint indicates the upper left corner of the game field, which is the constant for the left position
-	firstPoint := image.Point{X: 313, Y: 210}
+var (
+	// FirstPoint indicates the upper left corner of the game field, which is the constant for the left position
+	FirstPoint = image.Point{X: 313, Y: 210}
+)
 
+func GetScreen(mode settings.Settings) (*image.RGBA, error) {
 	width := mode.Width * settings.BlockSize
 	height := mode.Height * settings.BlockSize
 
-	img, err := screenshot.Capture(firstPoint.X, firstPoint.Y, width, height)
+	img, err := screenshot.Capture(FirstPoint.X, FirstPoint.Y, width, height)
 	if err != nil {
 		return nil, err
 	}

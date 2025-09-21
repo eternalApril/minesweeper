@@ -1,7 +1,8 @@
 package main
 
 import (
-	"fmt"
+	"main/field"
+	"main/game"
 	"main/settings"
 )
 
@@ -10,5 +11,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Mode: %d\n", mode)
+
+	field.InitField(mode)
+	if err = game.Start(mode); err != nil {
+		panic(err)
+	}
 }

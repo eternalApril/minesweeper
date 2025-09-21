@@ -3,9 +3,21 @@ package settings
 import (
 	"errors"
 	"flag"
+	"image/color"
 )
 
 type GameMod int
+
+var (
+	White    = color.RGBA{R: 255, G: 255, B: 255, A: 255}
+	Gray     = color.RGBA{R: 189, G: 189, B: 189, A: 255}
+	Blue     = color.RGBA{R: 0, G: 0, B: 255, A: 255}
+	Green    = color.RGBA{R: 2, G: 124, B: 2, A: 255}
+	Red      = color.RGBA{R: 255, G: 0, B: 0, A: 255}
+	DarkBlue = color.RGBA{R: 0, G: 0, B: 123, A: 255}
+	DarkRed  = color.RGBA{R: 123, G: 0, B: 0, A: 255}
+	Navy     = color.RGBA{R: 0, G: 123, B: 123, A: 255}
+)
 
 const (
 	BlockSize = 20 // block is a square with a side of 20
