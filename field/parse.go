@@ -67,6 +67,10 @@ func getInfoBlock(y, x int, img *image.RGBA) int {
 		return 5
 	case settings.Navy:
 		return 6
+	case settings.Black:
+		return -2
+	default:
+		fmt.Println(color)
 	}
 	return 69
 }
@@ -82,29 +86,13 @@ func Parse(mode settings.Settings) error {
 
 	for i := 0; i != mode.Height; i++ {
 		for j := 0; j != mode.Width; j++ {
-			if Field.Data[i][j] != -2 {
+			if Field.Data[i][j] != -2 { // check if element is a bomb
 				Field.Data[i][j] = getInfoBlock(i, j, img)
+				if Field.Data[i][j] == -2 {
+					return errors.New("bomb click")
+				}
 			}
 		}
 	}
 	return nil
-}
-
-func PrintField(mode settings.Settings) {
-	Field.Mu.RLock()
-	defer Field.Mu.RUnlock()
-
-	for i := 0; i != mode.Height; i++ {
-		for j := 0; j != mode.Width; j++ {
-			fmt.Printf("%3d", Field.Data[i][j])
-		}
-		fmt.Println()
-	}
-}
-
-func Bomb(y, x int) {
-	Field.Mu.Lock()
-	defer Field.Mu.Unlock()
-
-	Field.Data[y][x] = -2
 }

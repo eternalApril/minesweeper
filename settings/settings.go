@@ -17,6 +17,7 @@ var (
 	DarkBlue = color.RGBA{R: 0, G: 0, B: 123, A: 255}
 	DarkRed  = color.RGBA{R: 123, G: 0, B: 0, A: 255}
 	Navy     = color.RGBA{R: 0, G: 123, B: 123, A: 255}
+	Black    = color.RGBA{R: 3, G: 3, B: 3, A: 255}
 )
 
 const (
